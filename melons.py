@@ -66,20 +66,14 @@ class InternationalMelonOrder(AbstractMelonOrder):
 class GovernmentMelonOrder(AbstractMelonOrder):
     """A melon order made by the government"""
     
-    def __init__(self, species, qty, passed):
+    def __init__(self, species, qty):
         self.tax = 0
-        self.passed = passed
+        self.passed_inspection = False
 
         super().__init__(species, qty)
 
 
-    def mark_inspection(self):
+    def mark_inspection(self, passed):
         """Takes boolean and updates whether or not melon has passed inspection"""
         
-        passed_inspection = False
-
-        if self.passed:
-            print("YAAAAY I PASSED THE INSPECTION")
-            passed_inspection = True 
-        
-        return passed_inspection
+        self.passed_inspection = passed
